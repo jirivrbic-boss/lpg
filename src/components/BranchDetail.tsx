@@ -7,8 +7,16 @@ import { ICONS_3D } from "@/lib/icons";
 import { Icon3d } from "./Icon3d";
 import { BranchHero } from "./BranchHero";
 
-const SPOLECNY_POPIS =
-  "Kvalitní LPG s důrazem na spolehlivost, rychlou obsluhu a výhodné ceny. Férový přístup, čisté zázemí a snadná dostupnost.";
+function getSpolecnyPopis(branch: Branch): string {
+  const base =
+    "Kvalitní LPG s důrazem na spolehlivost, rychlou obsluhu a výhodné ceny. Prodej PB lahví a čisté zázemí s důrazem na pohodlí řidičů.";
+
+  if (branch.hasPbFilling) {
+    return `${base} V Kadani navíc provozujeme plnírnu PB lahví.`;
+  }
+
+  return base;
+}
 
 const ICON_SIZE_SM = 88;
 
@@ -41,7 +49,7 @@ export function BranchDetail({
             />
           </div>
           <p className="max-w-2xl text-lg leading-relaxed text-graphite-600">
-            {SPOLECNY_POPIS}
+            {getSpolecnyPopis(branch)}
           </p>
         </div>
 
@@ -113,16 +121,37 @@ export function BranchDetail({
           <h3 className="font-medium text-graphite-900">Ceník</h3>
           <p className="mt-1 text-xs text-graphite-500">{CENIK.poznamka}</p>
           <ul className="mt-4 space-y-2 text-graphite-700">
-            <li>
-              LPG: <strong>{CENIK.lpg} {CENIK.jednotka}</strong>
-            </li>
-            <li>
-              Benzín Natural 95: <strong>{CENIK.benzín95} {CENIK.jednotka}</strong>
-            </li>
-            <li>
-              Nafta: <strong>{CENIK.nafta} {CENIK.jednotka}</strong>
-            </li>
+            {branch.fuels.map((fuel) => (
+              <li key={fuel.id}>
+                {fuel.název}:{" "}
+                {fuel.máCenu ? (
+                  <strong>
+                    {CENIK.lpg} {CENIK.jednotka}
+                  </strong>
+                ) : (
+                  <strong>bude upřesněno</strong>
+                )}
+              </li>
+            ))}
           </ul>
+        </div>
+
+        <div className="mt-10 rounded-xl border border-graphite-200 bg-white p-6 shadow-sm">
+          <div className="mb-4">
+            <Icon3d src={ICONS_3D.lpgStojan} alt="" size={ICON_SIZE_SM} />
+          </div>
+          <h3 className="font-medium text-graphite-900">PB lahve a plnění</h3>
+          <p className="mt-1 text-sm text-graphite-600">
+            Prodáváme PB lahve v běžných velikostech:{" "}
+            <strong>{branch.pbBottles.join(", ")}</strong>. Aktuální ceny PB lahví vám
+            sdělíme na místě.
+          </p>
+          {branch.hasPbFilling && (
+            <p className="mt-2 text-sm text-graphite-600">
+              V Kadani navíc zajišťujeme{" "}
+              <strong>plnění PB lahví</strong> přímo na místě.
+            </p>
+          )}
         </div>
 
         <div className="mt-10 overflow-hidden rounded-xl border border-graphite-200 shadow-sm">
