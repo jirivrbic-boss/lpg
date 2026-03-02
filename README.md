@@ -27,7 +27,11 @@ Fotky musí být v **`public/fotky/`**:
 - `public/fotky/kadan/` – obrázky pro Kadaň
 - `public/fotky/karlovy-vary/` – obrázky pro Karlovy Vary
 
-Původní složky `fotky/kadan` a `fotky/karlovy vary` byly zkopírovány do `public/fotky/` při prvním nastavení. Při přidání nových fotek je zkopírujte sem a v `branches.ts` doplňte názvy souborů do `heroImage` a `galleryImages`.
+**AI rendery stanic** (hlavní hero vizuály) – umístěte do:
+- `public/fotky/kadan/kadan ai.png`
+- `public/fotky/karlovy-vary/karlovy vary ai.png`
+
+Cesty k AI renderům jsou v `src/lib/branches.ts` v konstantě `HERO_AI`. Pro výměnu hero obrázku změňte cestu v `HERO_AI` nebo nahraďte soubor stejným názvem.
 
 Mapy: v `branches.ts` jsou použity embed URL ve formátu `https://www.google.com/maps?q=ADRESA&output=embed`. Pro lepší vložení můžete v Google Maps zvolit Sdílet → Vložit mapu a vygenerovaný odkaz vložit do `mapEmbedUrl`.
 

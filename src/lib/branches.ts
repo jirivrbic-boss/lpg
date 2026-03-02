@@ -27,16 +27,24 @@ export interface Branch {
   mapEmbedUrl: string;
   /** Odkaz na navigaci (Google Maps directions) */
   mapDirectionsUrl: string;
-  /** Relativní cesta k hero obrázku (v public/) */
+  /** Relativní cesta k hero obrázku (v public/) – původní fotky */
   heroImage: string;
+  /** AI render stanice – hlavní hero vizuál pro detail pobočky a rozcestník */
+  heroAiImage: string;
   /** Relativní cesty k obrázkům galerie (v public/) */
   galleryImages: string[];
 }
 
-/** Cesty k fotek: umístěte složky fotky/kadan a fotky/karlovy-vary do public/fotky/ */
+/** Cesty k fotek: public/fotky/kadan a public/fotky/karlovy-vary */
 const FOTKY = {
   kadan: "/fotky/kadan",
   kv: "/fotky/karlovy-vary",
+} as const;
+
+/** AI rendery stanic – hlavní vizuální prvky. Pro výměnu změňte cestu zde. */
+export const HERO_AI = {
+  kadan: `${FOTKY.kadan}/kadan%20ai.png`,
+  kv: `${FOTKY.kv}/karlovy%20vary%20ai.png`,
 } as const;
 
 export const BRANCHES: Branch[] = [
@@ -51,6 +59,7 @@ export const BRANCHES: Branch[] = [
     mapEmbedUrl: "https://www.google.com/maps?q=Pr%C5%AFmyslov%C3%A1+1949,+432+01+Kada%C5%88&output=embed",
     mapDirectionsUrl: "https://www.google.com/maps/dir//Pr%C5%AFmyslov%C3%A1+1949,+432+01+Kada%C5%88",
     heroImage: `${FOTKY.kadan}/305629590_507657341364446_8761336370728853962_n.jpg`,
+    heroAiImage: HERO_AI.kadan,
     galleryImages: [
       `${FOTKY.kadan}/305629590_507657341364446_8761336370728853962_n.jpg`,
       `${FOTKY.kadan}/481247527_1196312465832260_1900453088293387025_n.jpg`,
@@ -68,6 +77,7 @@ export const BRANCHES: Branch[] = [
     mapEmbedUrl: "https://www.google.com/maps?q=Po%C4%8Derny+27,+360+17+Karlovy+Vary&output=embed",
     mapDirectionsUrl: "https://www.google.com/maps/dir//Po%C4%8Derny+27,+360+17+Karlovy+Vary",
     heroImage: `${FOTKY.kv}/104170245_101342534966452_6904228271707863341_n.jpg`,
+    heroAiImage: HERO_AI.kv,
     galleryImages: [
       `${FOTKY.kv}/104170245_101342534966452_6904228271707863341_n.jpg`,
       `${FOTKY.kv}/104195470_101351054965600_1301063408854676798_n.jpg`,

@@ -5,11 +5,11 @@ import Link from "next/link";
 import { CENIK, type Branch } from "@/lib/branches";
 import { ICONS_3D } from "@/lib/icons";
 import { Icon3d } from "./Icon3d";
+import { BranchHero } from "./BranchHero";
 
 const SPOLECNY_POPIS =
   "Kvalitní LPG s důrazem na spolehlivost, rychlou obsluhu a výhodné ceny. Férový přístup, čisté zázemí a snadná dostupnost.";
 
-const ICON_SIZE = 96;
 const ICON_SIZE_SM = 88;
 
 interface BranchDetailProps {
@@ -29,38 +29,7 @@ export function BranchDetail({
       className="scroll-mt-20"
       aria-labelledby={`branch-heading-${branch.id}`}
     >
-      {showHero && (
-        <section className="relative aspect-[21/9] w-full overflow-hidden bg-graphite-200 sm:aspect-[3/1]">
-          <Image
-            src={branch.heroImage}
-            alt={`Čerpací stanice ${branch.název}`}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-            priority={heroPriority}
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              target.style.display = "none";
-              const parent = target.parentElement;
-              if (parent && !parent.querySelector(".hero-placeholder")) {
-                const div = document.createElement("div");
-                div.className =
-                  "hero-placeholder absolute inset-0 bg-gradient-to-br from-graphite-700 to-graphite-900";
-                parent.appendChild(div);
-              }
-            }}
-          />
-          <div className="absolute inset-0 bg-graphite-900/20" />
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-6 sm:p-8">
-            <h2
-              id={`branch-heading-${branch.id}`}
-              className="text-3xl font-semibold tracking-tight text-white drop-shadow sm:text-4xl"
-            >
-              {branch.název}
-            </h2>
-          </div>
-        </section>
-      )}
+      {showHero && <BranchHero branch={branch} priority={heroPriority} />}
 
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="mb-12 flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8">
@@ -68,7 +37,7 @@ export function BranchDetail({
             <Icon3d
               src={ICONS_3D.cerpaciPistole}
               alt=""
-              size={ICON_SIZE}
+              size={96}
             />
           </div>
           <p className="max-w-2xl text-lg leading-relaxed text-graphite-600">
@@ -182,7 +151,7 @@ export function BranchDetail({
         >
           <a
             href={`tel:${branch.telefon.replace(/\s/g, "")}`}
-            className="inline-flex items-center gap-3 rounded-full bg-graphite-900 px-6 py-3 text-sm font-medium text-white transition hover:bg-graphite-800"
+            className="inline-flex items-center gap-3 rounded-full bg-accent-lime px-6 py-3 text-sm font-medium text-graphite-900 transition hover:bg-accent-lime/90"
           >
             <span className="shrink-0">
               <Icon3d src={ICONS_3D.telefon} alt="" size={56} />
@@ -193,7 +162,7 @@ export function BranchDetail({
             href={branch.mapDirectionsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 rounded-full border-2 border-graphite-900 px-6 py-3 text-sm font-medium text-graphite-900 transition hover:bg-graphite-50"
+            className="inline-flex items-center gap-3 rounded-full border-2 border-accent-lime bg-transparent px-6 py-3 text-sm font-medium text-graphite-900 transition hover:bg-accent-lime/10"
           >
             <span className="shrink-0">
               <Icon3d src={ICONS_3D.mapa} alt="" size={56} />
