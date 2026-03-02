@@ -10,6 +10,7 @@ export function HeroSection() {
 
   return (
     <section
+      id="pobocky"
       className="grid min-h-[85vh] grid-cols-1 md:grid-cols-2"
       aria-label="Vyberte pobočku"
     >

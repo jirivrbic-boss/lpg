@@ -43,8 +43,8 @@ const FOTKY = {
 
 /** AI rendery stanic – hlavní vizuální prvky. Pro výměnu změňte cestu zde. */
 export const HERO_AI = {
-  kadan: `${FOTKY.kadan}/kadan%20ai.png`,
-  kv: `${FOTKY.kv}/karlovy%20vary%20ai.png`,
+  kadan: `${FOTKY.kadan}/kadan ai.png`,
+  kv: `${FOTKY.kv}/karlovy vary ai.png`,
 } as const;
 
 export const BRANCHES: Branch[] = [
