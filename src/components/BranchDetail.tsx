@@ -99,59 +99,69 @@ export function BranchDetail({
           </div>
         </div>
 
-        <div className="mt-10 rounded-xl border border-graphite-200 bg-white p-6 shadow-sm">
-          <div className="mb-4">
-            <Icon3d src={ICONS_3D.cas} alt="" size={ICON_SIZE_SM} />
-          </div>
-          <h3 className="font-medium text-graphite-900">Otevírací doba</h3>
-          <ul className="mt-2 space-y-1 text-graphite-600">
-            {branch.otevíracíDoba.map((line, i) => (
-              <li key={i}>{line}</li>
-            ))}
-          </ul>
-        </div>
-
         <div
-          id="cenik"
-          className="mt-10 rounded-xl border border-graphite-200 bg-white p-6 shadow-sm"
+          className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
+          role="list"
         >
-          <div className="mb-4">
-            <Icon3d src={ICONS_3D.lpgStojan} alt="" size={ICON_SIZE_SM} />
+          <div
+            className="rounded-xl border border-graphite-200 bg-white p-6 shadow-sm"
+            role="listitem"
+          >
+            <div className="mb-4">
+              <Icon3d src={ICONS_3D.cas} alt="" size={ICON_SIZE_SM} />
+            </div>
+            <h3 className="font-medium text-graphite-900">Otevírací doba</h3>
+            <ul className="mt-2 space-y-1 text-graphite-600">
+              {branch.otevíracíDoba.map((line, i) => (
+                <li key={i}>{line}</li>
+              ))}
+            </ul>
           </div>
-          <h3 className="font-medium text-graphite-900">Ceník</h3>
-          <p className="mt-1 text-xs text-graphite-500">{CENIK.poznamka}</p>
-          <ul className="mt-4 space-y-2 text-graphite-700">
-            {branch.fuels.map((fuel) => (
-              <li key={fuel.id}>
-                {fuel.název}:{" "}
-                {fuel.máCenu ? (
-                  <strong>
-                    {CENIK.lpg} {CENIK.jednotka}
-                  </strong>
-                ) : (
-                  <strong>bude upřesněno</strong>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mt-10 rounded-xl border border-graphite-200 bg-white p-6 shadow-sm">
-          <div className="mb-4">
-            <Icon3d src={ICONS_3D.lpgStojan} alt="" size={ICON_SIZE_SM} />
+          <div
+            id="cenik"
+            className="rounded-xl border border-graphite-200 bg-white p-6 shadow-sm"
+            role="listitem"
+          >
+            <div className="mb-4">
+              <Icon3d src={ICONS_3D.lpgStojan} alt="" size={ICON_SIZE_SM} />
+            </div>
+            <h3 className="font-medium text-graphite-900">Ceník</h3>
+            <p className="mt-1 text-xs text-graphite-500">{CENIK.poznamka}</p>
+            <ul className="mt-4 space-y-2 text-graphite-700">
+              {branch.fuels.map((fuel) => (
+                <li key={fuel.id}>
+                  {fuel.název}:{" "}
+                  {fuel.máCenu ? (
+                    <strong>
+                      {CENIK.lpg} {CENIK.jednotka}
+                    </strong>
+                  ) : (
+                    <strong>bude upřesněno</strong>
+                  )}
+                </li>
+              ))}
+            </ul>
           </div>
-          <h3 className="font-medium text-graphite-900">PB lahve a plnění</h3>
-          <p className="mt-1 text-sm text-graphite-600">
-            Prodáváme PB lahve v běžných velikostech:{" "}
-            <strong>{branch.pbBottles.join(", ")}</strong>. Aktuální ceny PB lahví vám
-            sdělíme na místě.
-          </p>
-          {branch.hasPbFilling && (
-            <p className="mt-2 text-sm text-graphite-600">
-              V Kadani navíc zajišťujeme{" "}
-              <strong>plnění PB lahví</strong> přímo na místě.
+          <div
+            className="rounded-xl border border-graphite-200 bg-white p-6 shadow-sm"
+            role="listitem"
+          >
+            <div className="mb-4">
+              <Icon3d src={ICONS_3D.pbLahev} alt="" size={ICON_SIZE_SM} />
+            </div>
+            <h3 className="font-medium text-graphite-900">PB lahve a plnění</h3>
+            <p className="mt-1 text-sm text-graphite-600">
+              Prodáváme PB lahve v běžných velikostech:{" "}
+              <strong>{branch.pbBottles.join(", ")}</strong>. Aktuální ceny PB lahví vám
+              sdělíme na místě.
             </p>
-          )}
+            {branch.hasPbFilling && (
+              <p className="mt-2 text-sm text-graphite-600">
+                V Kadani navíc zajišťujeme{" "}
+                <strong>plnění PB lahví</strong> přímo na místě.
+              </p>
+            )}
+          </div>
         </div>
 
         <div className="mt-10 overflow-hidden rounded-xl border border-graphite-200 shadow-sm">

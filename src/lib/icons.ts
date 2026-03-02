@@ -25,6 +25,8 @@ export const ICONS_3D = {
   email: path("obalka email ikona.png"),
   /** Mapa / navigace */
   mapa: path("mapa.png"),
+  /** PB lahve */
+  pbLahev: path("pb lahev.png"),
   /** Dekorace hero / CTA */
   auto: path("auto.png"),
   /** Hero pozadí */
