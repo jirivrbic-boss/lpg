@@ -43,6 +43,14 @@ Mapy: v `branches.ts` jsou použity embed URL ve formátu `https://www.google.co
 - Ikony: lucide-react
 - Responzivní, mobile-first, s důrazem na přístupnost (ARIA, focus, sémantika)
 
+## Nasazení na Vercel
+
+1. Propojte repozitář s Vercel (Import Project z GitHubu).
+2. **Root Directory** ponechte prázdné (nebo `.`) – projekt je v kořeni repo.
+3. **Framework Preset** by měl být automaticky „Next.js“.
+4. Po nasazení zkontrolujte **Build Logs**: build musí skončit úspěchem (`next build`). Pokud build spadne, na produkci se zobrazí 404.
+5. Pokud vidíte 404: NOT_FOUND, obvykle to znamená, že build selhal – v Vercel dashboardu otevřete poslední deployment a zkontrolujte záložku „Building“.
+
 ## Git
 
 Projekt je připraven na commit a push na GitHub (repo: https://github.com/jirivrbic-boss/lpg.git).
