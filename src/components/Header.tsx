@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import type { BranchId } from "@/lib/branches";
 
@@ -93,12 +92,23 @@ export function Header() {
 
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded md:hidden"
+          className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded md:hidden"
           onClick={() => setMobileOpen((o) => !o)}
           aria-expanded={mobileOpen}
           aria-label={mobileOpen ? "Zavřít menu" : "Otevřít menu"}
         >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          {mobileOpen ? (
+            <span className="relative inline-block h-6 w-6" aria-hidden>
+              <span className="absolute left-1/2 top-1/2 h-0.5 w-6 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-graphite-700" />
+              <span className="absolute left-1/2 top-1/2 h-0.5 w-6 -translate-x-1/2 -translate-y-1/2 -rotate-45 bg-graphite-700" />
+            </span>
+          ) : (
+            <span className="flex flex-col gap-1.5" aria-hidden>
+              <span className="h-0.5 w-6 bg-graphite-700" />
+              <span className="h-0.5 w-6 bg-graphite-700" />
+              <span className="h-0.5 w-6 bg-graphite-700" />
+            </span>
+          )}
         </button>
       </div>
 

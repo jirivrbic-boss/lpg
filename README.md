@@ -34,13 +34,21 @@ Mapy: v `branches.ts` jsou použity embed URL ve formátu `https://www.google.co
 ## Struktura projektu
 
 - `src/app/` – stránky (App Router): `page.tsx` (homepage), `kadan/page.tsx`, `kv/page.tsx`
-- `src/components/` – Header, Footer, BranchDetail
+- `src/components/` – Header, Footer, BranchDetail, HeroSection, Icon3d
 - `src/lib/branches.ts` – data poboček a ceník
+- `src/lib/icons.ts` – cesty k 3D ikonám
+
+## 3D ikony
+
+Ikony jsou ve složce **`public/3d/`**. Mapování (která ikona kde je) a cesty jsou v **`src/lib/icons.ts`**.
+
+- **Výměna ikony:** Nahraďte soubor ve složce `public/3d/` stejným názvem, nebo změňte cestu v `src/lib/icons.ts` (konstanty `ICONS_3D`).
+- **Velikost / styl:** Komponenta `Icon3d` v `src/components/Icon3d.tsx` má prop `size` (výchozí 96 px) a hover efekt (scale + shadow). Úpravy velikosti lze dělat přímo u použití `<Icon3d size={80} … />`.
 
 ## Technologie
 
 - Next.js 14 (App Router), TypeScript, Tailwind CSS
-- Ikony: lucide-react
+- 3D ikony (PNG) v `public/3d/`, vykreslované přes `next/image`
 - Responzivní, mobile-first, s důrazem na přístupnost (ARIA, focus, sémantika)
 
 ## Nasazení na Vercel

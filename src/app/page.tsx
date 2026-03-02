@@ -1,39 +1,11 @@
 import Link from "next/link";
-import { ChevronDown } from "lucide-react";
 import { BRANCHES } from "@/lib/branches";
+import { HeroSection } from "@/components/HeroSection";
 
 export default function HomePage() {
   return (
     <>
-      <section
-        className="relative flex min-h-[85vh] flex-col items-center justify-center bg-gradient-to-b from-graphite-50 to-white px-4 py-20 sm:min-h-[90vh] sm:py-28"
-        aria-label="Úvod"
-      >
-        <h1 className="text-center text-4xl font-semibold tracking-tight text-graphite-900 sm:text-5xl md:text-6xl">
-          LPG čerpací stanice
-        </h1>
-        <p className="mt-4 max-w-xl text-center text-lg text-graphite-600">
-          Kvalitní LPG, výhodné ceny. Vyberte pobočku.
-        </p>
-        <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:gap-6">
-          <Link
-            href="/kadan"
-            className="flex min-w-[200px] items-center justify-center rounded-2xl bg-graphite-900 px-8 py-4 text-lg font-medium text-white shadow-lg transition hover:bg-graphite-800 focus:outline-none focus:ring-2 focus:ring-accent-lime focus:ring-offset-2"
-          >
-            LPG Kadaň
-          </Link>
-          <Link
-            href="/kv"
-            className="flex min-w-[200px] items-center justify-center rounded-2xl border-2 border-graphite-900 bg-white px-8 py-4 text-lg font-medium text-graphite-900 transition hover:bg-graphite-50 focus:outline-none focus:ring-2 focus:ring-accent-lime focus:ring-offset-2"
-          >
-            LPG Karlovy Vary
-          </Link>
-        </div>
-        <div className="mt-16 flex flex-col items-center gap-2 text-graphite-500">
-          <span className="text-sm">Vyberte pobočku níže</span>
-          <ChevronDown size={24} aria-hidden />
-        </div>
-      </section>
+      <HeroSection />
 
       <section id="pobocky" className="scroll-mt-20 border-t border-graphite-100 bg-white">
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">

@@ -1,5 +1,3 @@
-import Link from "next/link";
-import { Facebook } from "lucide-react";
 import { BRANCHES, CENIK } from "@/lib/branches";
 
 export function Footer() {
@@ -32,10 +30,9 @@ export function Footer() {
                 href={b.facebookUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 inline-flex items-center gap-1.5 text-sm text-graphite-600 hover:text-graphite-900"
+                className="mt-2 inline-block text-sm text-graphite-600 hover:text-graphite-900 hover:underline"
                 aria-label={`Facebook – ${b.název}`}
               >
-                <Facebook size={18} aria-hidden />
                 Facebook
               </a>
             </div>

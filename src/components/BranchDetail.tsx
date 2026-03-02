@@ -2,11 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, Phone, Mail, Clock, Facebook, Navigation, PhoneCall } from "lucide-react";
 import { CENIK, type Branch } from "@/lib/branches";
+import { ICONS_3D } from "@/lib/icons";
+import { Icon3d } from "./Icon3d";
 
 const SPOLECNY_POPIS =
   "Kvalitní LPG s důrazem na spolehlivost, rychlou obsluhu a výhodné ceny. Férový přístup, čisté zázemí a snadná dostupnost.";
+
+const ICON_SIZE = 96;
+const ICON_SIZE_SM = 88;
 
 interface BranchDetailProps {
   branch: Branch;
@@ -59,9 +63,18 @@ export function BranchDetail({
       )}
 
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <p className="max-w-2xl text-lg leading-relaxed text-graphite-600">
-          {SPOLECNY_POPIS}
-        </p>
+        <div className="mb-12 flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8">
+          <div className="shrink-0">
+            <Icon3d
+              src={ICONS_3D.cerpaciPistole}
+              alt=""
+              size={ICON_SIZE}
+            />
+          </div>
+          <p className="max-w-2xl text-lg leading-relaxed text-graphite-600">
+            {SPOLECNY_POPIS}
+          </p>
+        </div>
 
         <div
           className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
@@ -71,11 +84,9 @@ export function BranchDetail({
             className="rounded-xl border border-graphite-200 bg-white p-6 shadow-sm"
             role="listitem"
           >
-            <MapPin
-              className="mb-3 text-accent-lime"
-              size={24}
-              aria-hidden
-            />
+            <div className="mb-4">
+              <Icon3d src={ICONS_3D.lokalizace} alt="" size={ICON_SIZE_SM} />
+            </div>
             <h3 className="font-medium text-graphite-900">Adresa</h3>
             <p className="mt-1 text-graphite-600">{branch.adresa}</p>
           </div>
@@ -83,7 +94,9 @@ export function BranchDetail({
             className="rounded-xl border border-graphite-200 bg-white p-6 shadow-sm"
             role="listitem"
           >
-            <Phone className="mb-3 text-accent-lime" size={24} aria-hidden />
+            <div className="mb-4">
+              <Icon3d src={ICONS_3D.telefon} alt="" size={ICON_SIZE_SM} />
+            </div>
             <h3 className="font-medium text-graphite-900">Telefon</h3>
             <a
               href={`tel:${branch.telefon.replace(/\s/g, "")}`}
@@ -96,7 +109,9 @@ export function BranchDetail({
             className="rounded-xl border border-graphite-200 bg-white p-6 shadow-sm"
             role="listitem"
           >
-            <Mail className="mb-3 text-accent-lime" size={24} aria-hidden />
+            <div className="mb-4">
+              <Icon3d src={ICONS_3D.email} alt="" size={ICON_SIZE_SM} />
+            </div>
             <h3 className="font-medium text-graphite-900">E-mail</h3>
             <a
               href={`mailto:${branch.email}`}
@@ -108,7 +123,9 @@ export function BranchDetail({
         </div>
 
         <div className="mt-10 rounded-xl border border-graphite-200 bg-white p-6 shadow-sm">
-          <Clock className="mb-3 inline text-accent-lime" size={24} aria-hidden />
+          <div className="mb-4">
+            <Icon3d src={ICONS_3D.cas} alt="" size={ICON_SIZE_SM} />
+          </div>
           <h3 className="font-medium text-graphite-900">Otevírací doba</h3>
           <ul className="mt-2 space-y-1 text-graphite-600">
             {branch.otevíracíDoba.map((line, i) => (
@@ -121,6 +138,9 @@ export function BranchDetail({
           id="cenik"
           className="mt-10 rounded-xl border border-graphite-200 bg-white p-6 shadow-sm"
         >
+          <div className="mb-4">
+            <Icon3d src={ICONS_3D.lpgStojan} alt="" size={ICON_SIZE_SM} />
+          </div>
           <h3 className="font-medium text-graphite-900">Ceník</h3>
           <p className="mt-1 text-xs text-graphite-500">{CENIK.poznamka}</p>
           <ul className="mt-4 space-y-2 text-graphite-700">
@@ -137,7 +157,10 @@ export function BranchDetail({
         </div>
 
         <div className="mt-10 overflow-hidden rounded-xl border border-graphite-200 shadow-sm">
-          <h3 className="sr-only">Mapa – {branch.název}</h3>
+          <div className="flex items-center gap-3 border-b border-graphite-100 bg-graphite-50 px-4 py-3">
+            <Icon3d src={ICONS_3D.mapa} alt="" size={80} />
+            <h3 className="font-medium text-graphite-900">Mapa – {branch.název}</h3>
+          </div>
           <iframe
             src={branch.mapEmbedUrl}
             width="100%"
@@ -159,18 +182,22 @@ export function BranchDetail({
         >
           <a
             href={`tel:${branch.telefon.replace(/\s/g, "")}`}
-            className="inline-flex items-center gap-2 rounded-full bg-graphite-900 px-6 py-3 text-sm font-medium text-white transition hover:bg-graphite-800"
+            className="inline-flex items-center gap-3 rounded-full bg-graphite-900 px-6 py-3 text-sm font-medium text-white transition hover:bg-graphite-800"
           >
-            <PhoneCall size={18} aria-hidden />
+            <span className="shrink-0">
+              <Icon3d src={ICONS_3D.telefon} alt="" size={56} />
+            </span>
             Zavolat
           </a>
           <a
             href={branch.mapDirectionsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border-2 border-graphite-900 px-6 py-3 text-sm font-medium text-graphite-900 transition hover:bg-graphite-50"
+            className="inline-flex items-center gap-3 rounded-full border-2 border-graphite-900 px-6 py-3 text-sm font-medium text-graphite-900 transition hover:bg-graphite-50"
           >
-            <Navigation size={18} aria-hidden />
+            <span className="shrink-0">
+              <Icon3d src={ICONS_3D.mapa} alt="" size={56} />
+            </span>
             Navigovat
           </a>
           <a
@@ -180,7 +207,6 @@ export function BranchDetail({
             className="inline-flex items-center gap-2 rounded-full border border-graphite-300 px-6 py-3 text-sm font-medium text-graphite-700 transition hover:bg-graphite-50"
             aria-label={`Facebook – ${branch.název}`}
           >
-            <Facebook size={18} aria-hidden />
             Facebook
           </a>
         </div>
