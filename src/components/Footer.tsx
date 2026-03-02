@@ -3,7 +3,8 @@ import { BRANCHES, CENIK } from "@/lib/branches";
 export function Footer() {
   return (
     <footer
-      className="border-t border-graphite-200 bg-graphite-50"
+      id="kontakt"
+      className="scroll-mt-20 border-t border-graphite-200 bg-graphite-50"
       role="contentinfo"
     >
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">

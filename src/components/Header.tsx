@@ -7,7 +7,6 @@ import type { BranchId } from "@/lib/branches";
 
 const NAV = [
   { href: "/#pobocky", label: "Pobočky" },
-  { href: "/#cenik", label: "Ceník" },
   { href: "/#kontakt", label: "Kontakt" },
 ];
 
@@ -54,8 +53,8 @@ export function Header() {
         >
           {NAV.map(({ href, label }) => (
             <Link
-              key={href}
-              href={href}
+              key={label}
+              href={label === "Kontakt" ? `${pathname || "/"}#kontakt` : href}
               className="text-sm font-medium text-graphite-600 transition hover:text-graphite-900"
             >
               {label}
@@ -121,8 +120,8 @@ export function Header() {
           <nav className="flex flex-col gap-4" aria-label="Mobilní navigace">
             {NAV.map(({ href, label }) => (
               <Link
-                key={href}
-                href={href}
+                key={label}
+                href={label === "Kontakt" ? `${pathname || "/"}#kontakt` : href}
                 onClick={() => setMobileOpen(false)}
                 className="text-sm font-medium text-graphite-600 hover:text-graphite-900"
               >

@@ -144,7 +144,6 @@ export function BranchDetail({
         </div>
 
         <div
-          id="kontakt"
           className="mt-10 flex flex-wrap gap-4"
           role="group"
           aria-label="Akce"
