@@ -139,7 +139,7 @@ export const BRANCHES: Branch[] = [
     ],
     pbBottles: ["2 kg", "5 kg", "10 kg", "33 kg"],
     hasPbFilling: false,
-    shopDescription: "Smíšené zboží – bez prodeje novin.",
+    shopDescription: "Otevřený shop se smíšeným zbožím – bez prodeje novin.",
     galleryImages: [
       `${FOTKY.kv}/104170245_101342534966452_6904228271707863341_n.jpg`,
       `${FOTKY.kv}/104195470_101351054965600_1301063408854676798_n.jpg`,

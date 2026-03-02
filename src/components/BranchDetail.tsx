@@ -48,9 +48,14 @@ export function BranchDetail({
               size={96}
             />
           </div>
-          <p className="max-w-2xl text-lg leading-relaxed text-graphite-600">
-            {getSpolecnyPopis(branch)}
-          </p>
+          <div className="max-w-2xl space-y-3">
+            <p className="text-lg leading-relaxed text-graphite-600">
+              {getSpolecnyPopis(branch)}
+            </p>
+            <p className="text-sm text-graphite-500">
+              {branch.shopDescription}
+            </p>
+          </div>
         </div>
 
         <div
